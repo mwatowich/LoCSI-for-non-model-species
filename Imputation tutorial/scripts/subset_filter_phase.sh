@@ -6,7 +6,7 @@ module load tabix/0.2.6
 module load beagle/4.0
 
 # Filter out samples with high missingness and sites with high fraction missing 
-bcftools view -r ${chrom} -S samples_lowMiss --threads 24 \
+bcftools view -r ${chrom} -S ref_samples_lowMiss --threads 24 \
     --force-samples /data/reference.vcf.gz | \
     bcftools view --threads 24 -i 'F_MISSING<0.1' | \
     bcftools +fill-tags -Oz -o chr${chrom}.filtered.vcf.gz
