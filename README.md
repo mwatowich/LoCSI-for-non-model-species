@@ -4,4 +4,4 @@
 
 ### Please see Tutorial/ for the guide to implementing imputation analyses in natural populations 
 
-### Please see Manuscript_analyses/ for analyses for Watowich et al. 2023
+### Please see Manuscript_analyses/ for analyses for Watowich et al. 2023 (under review)
