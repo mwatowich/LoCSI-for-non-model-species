@@ -7,7 +7,7 @@
 
 
 ### Prepare high-confidence reference panel
-* For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
+#### For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
 
 1. Remove samples with high-per-sample missingness (per_sample_missingness.sh)
    * Check the distribution of per-sample missingness from stats output files. Make file of reference individuals with low-missingness (example: data/ref_samples_lowMiss)
@@ -38,7 +38,7 @@
 9. Calculate relatedness using KING from VCFtools (relatedness.sh)
 
 ### OPTIONAL: Validating reference panel using down-sampling and leave-one-out
-* NOTE: requires bam files for each individual per chromosome
+#### NOTE: requires bam files for each individual per chromosome
 
 1. Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
 
