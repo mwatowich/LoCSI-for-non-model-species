@@ -42,18 +42,18 @@
 ### OPTIONAL: Validating reference panel using down-sampling and leave-one-out
 * NOTE: requires bam files for each individual per chromosome
 
-2. Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
+1. Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
 
-3. Down-sample bams: subsample.sh
+2. Down-sample bams: subsample.sh
 
-4. Pileups of down-sampled bams: pileup.sh
+3. Pileups of down-sampled bams: pileup.sh
 
-5. Impute using leave-one out approach.
+4. Impute using leave-one out approach.
 * Make reference phased VCF for all LOO iterations: LOO_impute_ref.sh.
 * Impute the animal, using the reference file where they are removed: impute_single_chrom_LOO.sh
 
-6. Concatenate VCFs: concat_vcfs.sh
+5. Concatenate VCFs: concat_vcfs.sh
 
-7. Test concordance. Compare imputed to 'truth' VCF, the high-coverage VCF of that animal
+6. Test concordance. Compare imputed to 'truth' VCF, the high-coverage VCF of that animal
 
-8. Analyze concordance per coverage level 
+7. Analyze concordance per coverage level 
