@@ -11,7 +11,7 @@
 
 1. Remove samples with high-per-sample missingness (per_sample_missingness.sh)
 * Check the distribution of per-sample missingness from output files
-* Make file of reference individuals with low-missingness (see example: data/samples_lowMiss)
+* Make file of reference individuals with low-missingness (see example: data/ref_samples_lowMiss)
 * "High-missingness" will depend on the distribution of missingness in the reference, thus we do not provide a recommended threshold
 
 2. Remove samples with high missingness, remove sites missing data in >10% of samples, phase (subset_filter_phase.sh)
