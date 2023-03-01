@@ -9,9 +9,9 @@
 ### Prepare high-confidence reference panel
 * For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
 
-1. Make list of samples with high-missingness (subset.sh). 
+1. Remove samples with high-per-sample missingness (subset.sh). 
 * Check the distribution of per-sample missingness from output files
-* Make file of reference individuals with high-missingness called "highMiss_samples"
+* Make file of reference individuals with low-missingness (see example: data/samples_lowMiss)
 * "High-missingness" will depend on the distribution of missingness in the reference, thus we do not provide a recommended threshold
 
 2. Remove samples with high missingness, remove sites missing data in >10% of samples, phase (subset_filter_phase.sh)
