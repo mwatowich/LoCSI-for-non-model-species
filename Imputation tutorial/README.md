@@ -10,19 +10,18 @@
 * For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
 
 1. Remove samples with high-per-sample missingness (per_sample_missingness.sh)
-* Check the distribution of per-sample missingness from output files
-* Make file of reference individuals with low-missingness (see example: data/ref_samples_lowMiss)
+* Check the distribution of per-sample missingness from stats output files. Make file of reference individuals with low-missingness (example: data/ref_samples_lowMiss)
 * "High-missingness" will depend on the distribution of missingness in the reference, thus we do not provide a recommended threshold
 
 2. Remove samples with high missingness, remove sites missing data in >10% of samples, phase (subset_filter_phase.sh)
 * We use 10%, but set the threshold accordingly to your reference panel
-* We phase with Beagle (REF), but any phasing program of similar performance can be used
+* We phase with Beagle (Browning & Browning 2007), but any phasing program of similar performance can be used
 
 3. Optional: Perform standard quality control steps for genetic analyses (remove invariant and multiallelic sites, sites out of HWE, etc.)
 
 
 ### Impute low-coverage data
-4. Create a file of sample names to be used for calling individual file names (see example: data/samples)
+4. Create a file of sample names to be used for calling individual file names (example: data/samples)
 
 5. Impute (impute_single_chrom.sh)
 * We use loimpue (Wasik 2021) but use any imputation program of your choice
