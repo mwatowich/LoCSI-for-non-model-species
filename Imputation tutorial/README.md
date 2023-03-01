@@ -23,8 +23,7 @@
 ### Impute low-coverage data
 4. Create a file of sample names to be used for calling individual file names (example: data/samples)
 
-5. Impute (impute_single_chrom.sh)
-* We use loimpue (Wasik 2021) but use any imputation program of your choice
+5. Impute (impute_single_chrom.sh). We use loimpue (Wasik 2021) but use any imputation program of your choice
 
 6. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their specific population and dataset. 
 * get_maf.sh #Note that if multiallelic sites are in the reference panel, this only keeps the first of multi-allelic alleles
