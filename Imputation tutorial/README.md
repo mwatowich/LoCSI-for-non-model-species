@@ -5,8 +5,6 @@
 * Based on our analyses in Watowich 2023 (in prep), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture hould be accounted for when developing the reference panel.
 * If the quality of genotype imputation from the reference panel is unknown, we suggest testing imputation quality using a leave-one-out approach. Please see "Validating reference panel using down-sampling and leave-one-out" below for more information. 
 </br>
-</br>
-
 ### Prepare high-confidence reference panel
 #### For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
 
