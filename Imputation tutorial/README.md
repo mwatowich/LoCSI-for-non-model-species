@@ -5,6 +5,7 @@
 * Based on our analyses in Watowich 2023 (in prep), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture hould be accounted for when developing the reference panel.
 * If the quality of genotype imputation from the reference panel is unknown, we suggest testing imputation quality using a leave-one-out approach. Please see "Validating reference panel using down-sampling and leave-one-out" below for more information. 
 </br>
+
 ### Prepare high-confidence reference panel
 #### For these steps, we assume a VCF file containing all reference samples is available. Our scripts assume separate VCFs per chromosome, though this format is not necessary
 
@@ -17,24 +18,26 @@
    * We phase with Beagle (Browning & Browning 2007), but any phasing program of similar performance can be used
 
 3. Optional: Perform standard quality control steps for genetic analyses (remove invariant and multiallelic sites, sites out of HWE, etc.)
-
+</br>
 
 ### Impute low-coverage data
-4. Create a file of sample names to be used for calling individual file names (example: data/samples)
+1. Create a file of sample names to be used for calling individual file names (example: data/samples)
 
-5. Impute (impute_single_chrom.sh). We use loimpue (Wasik 2021) but use any imputation program of your choice
+2. Impute (impute_single_chrom.sh). We use loimpue (Wasik 2021) but use any imputation program of your choice
 
-6. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their specific population and dataset. 
+3. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their specific population and dataset. 
    * get_maf.sh #Note that if multiallelic sites are in the reference panel, this only keeps the first of multi-allelic alleles
    * Make AFs.hdr, see file for example: ##INFO=<ID=REF_AF,Number=1,Type=Float,Description="Allele frequency in reference genotypes">
    * Run maf_annotate.sh: bcftools annotate imputed files with gelada ref MAF 
 
-7. Concat files / merge 
+4. Concat files / merge 
+</br>
 
 ### Imputed data are generated! Time for downstream genetic analyses. 
-8. Example analysis 1: population structure analyses using PCA (make plink files/run plink)
+* Example 1: population structure analyses using PCA (make_plink_files/sh and run_plink.sh)
 
-9. Calculate relatedness using KING from VCFtools (relatedness.sh)
+* Example 2: Calculate relatedness using KING from VCFtools (relatedness.sh)
+</br>
 
 ### OPTIONAL: Validating reference panel using down-sampling and leave-one-out
 #### NOTE: requires bam files for each individual per chromosome
