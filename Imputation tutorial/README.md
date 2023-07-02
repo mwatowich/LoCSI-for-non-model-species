@@ -37,16 +37,16 @@
 </br>
 
 ### Imputed data are generated. Perform downstream genetic analyses
-* Example 1: population structure analysis using PCA in plink (pca.sh)
-
-* Example 2: Calculate relatedness using KING from VCFtools (relatedness.sh)
+1. pca_relatedness.sh
+* Example 1: population structure analysis using PCA in plink
+* Example 2: Calculate relatedness using KING from VCFtools
 </br>
 
 ### OPTIONAL: Validating reference panel using down-sampling and leave-one-out approach
 #### NOTE: we assume bam files for each individual per chromosome
 
 1. Generate in silico low-coverage sequencing
-   * Make file of the necessary multiplier to achieve each test coverage level (see example: cov.txt)
+   * Make file of the necessary multiplier to achieve each test coverage level (see example: cov_x)
    * Down-sample bams: subsample.sh
    * Pileups of down-sampled bams: pileup.sh
 
@@ -56,6 +56,7 @@
 
 3. Merge imputed VCFs, perform QC steps as described above
 
-4. Test concordance. Compare imputed data to 'truth' VCF, the high-coverage VCF of that animal. Note: the 'truth' VCF should only include sites in the reference dataset, i.e., sites that were imputed, otherwise estimates of imputation concordance will be biased
-   * concord_indiv.sh
-   * split_concord_indiv.sh
+4. Test concordance: concord.sh
+   * Compare imputed data to 'truth' VCF, the high-coverage VCF of that animal
+   * Note: the 'truth' VCF should only include sites in the reference dataset, i.e., sites that were imputed, otherwise estimates of imputation concordance will be biased
+   * If imputed data are concatenated across chromosomes, ensure 'truth' VCF is as well
