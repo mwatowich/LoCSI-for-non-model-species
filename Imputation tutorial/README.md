@@ -2,8 +2,8 @@
 
 
 ### Identify a reference panel for the species of interest
-* Based on our analyses in Watowich 2023 (in prep), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture hould be accounted for when developing the reference panel.
-* If the quality of genotype imputation from the reference panel is unknown, we suggest testing imputation quality using a leave-one-out approach. Please see "Validating reference panel using down-sampling and leave-one-out" below for more information. 
+* Based on our analyses in Watowich 2023 (in prep), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture should be accounted for when developing the reference panel.
+* If the quality of genotype imputation from the reference panel is unknown, we suggest testing imputation quality using a leave-one-out approach. Please see the section "Validating reference panel using down-sampling and leave-one-out" below for more information. 
 </br>
 
 ### Prepare high-confidence reference panel
@@ -30,30 +30,33 @@
    * Make AFs.hdr, see file for example: ##INFO=<ID=REF_AF,Number=1,Type=Float,Description="Allele frequency in reference genotypes">
    * Run maf_annotate.sh: bcftools annotate imputed files with gelada ref MAF 
 
-4. Concat files / merge 
+4. Remove singletons
+
+5. Concat files / merge 
 </br>
 
-### Imputed data are generated! Time for downstream genetic analyses. 
+### Imputed data are generated! Perform downstream genetic analyses
 * Example 1: population structure analyses using PCA (make_plink_files/sh and run_plink.sh)
 
 * Example 2: Calculate relatedness using KING from VCFtools (relatedness.sh)
 </br>
 
-### OPTIONAL: Validating reference panel using down-sampling and leave-one-out
+### OPTIONAL: Validating reference panel using down-sampling and leave-one-out approach
 #### NOTE: requires bam files for each individual per chromosome
 
-1. Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
+1. Generate in silico low-coverage sequencing
+   * Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
+   * Down-sample bams: subsample.sh
+   * Pileups of down-sampled bams: pileup.sh
 
-2. Down-sample bams: subsample.sh
-
-3. Pileups of down-sampled bams: pileup.sh
-
-4. Impute using leave-one out approach.
+2. Impute using leave-one out approach
    * Make reference phased VCF for all LOO iterations: LOO_impute_ref.sh.
-   * Impute the animal, using the reference file where they are removed: impute_single_chrom_LOO.sh
+   * Impute data for the left-out individual, using the reference file where they are removed: impute_single_chrom_LOO.sh
 
-5. Concatenate VCFs: concat_vcfs.sh
+3. Remove singletons: 
 
-6. Test concordance. Compare imputed to 'truth' VCF, the high-coverage VCF of that animal
+4. Concatenate and merge VCFs: concat_vcfs.sh
 
-7. Analyze concordance per coverage level 
+5. Test concordance. Compare imputed to 'truth' VCF, the high-coverage VCF of that animal
+
+8. Analyze concordance per coverage level 
