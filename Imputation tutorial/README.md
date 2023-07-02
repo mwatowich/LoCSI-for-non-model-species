@@ -17,7 +17,7 @@
    * We use 10%, but set the threshold accordingly to your reference panel
    * We phase with Beagle (Browning & Browning 2007), but any phasing program of similar performance can be used
 
-3. Optional: Perform standard quality control steps for genetic analyses (remove invariant and multiallelic sites, sites out of HWE, etc.)
+3. Optional: Perform standard quality control steps for genetic analyses. For example, removing invariant and multiallelic sites, sites out of HWE, etc. (filter_AF_multiallelic.sh)
 </br>
 
 ### Impute low-coverage data
@@ -25,38 +25,36 @@
 
 2. Impute (impute_single_chrom.sh). We use loimpue (Wasik 2021) but use any imputation program of your choice
 
-3. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their specific population and dataset. 
+3. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their population and dataset.
    * get_maf.sh #Note that if multiallelic sites are in the reference panel, this only keeps the first of multi-allelic alleles
-   * Make AFs.hdr, see file for example: ##INFO=<ID=REF_AF,Number=1,Type=Float,Description="Allele frequency in reference genotypes">
-   * Run maf_annotate.sh: bcftools annotate imputed files with gelada ref MAF 
+   * Make header file (example: AFs.hdr)
+   * maf_annotate.sh to annotate imputed files with reference panel MAF
 
-4. Remove singletons
+4. Merge imputed VCFs across chromosomes and individuals: merge_imputed.sh
 
-5. Concat files / merge 
+5. Optional: perform any QC (e.g., removing singletons, HWE or LD-filtering)
 </br>
 
-### Imputed data are generated! Perform downstream genetic analyses
-* Example 1: population structure analyses using PCA (make_plink_files/sh and run_plink.sh)
+### Imputed data are generated. Perform downstream genetic analyses
+* Example 1: population structure analysis using PCA in plink (pca.sh)
 
 * Example 2: Calculate relatedness using KING from VCFtools (relatedness.sh)
 </br>
 
 ### OPTIONAL: Validating reference panel using down-sampling and leave-one-out approach
-#### NOTE: requires bam files for each individual per chromosome
+#### NOTE: we assume bam files for each individual per chromosome
 
 1. Generate in silico low-coverage sequencing
-   * Make file of the necessary multiplier to achieve each test coverage level (see example: XXXX)
+   * Make file of the necessary multiplier to achieve each test coverage level (see example: cov.txt)
    * Down-sample bams: subsample.sh
    * Pileups of down-sampled bams: pileup.sh
 
 2. Impute using leave-one out approach
-   * Make reference phased VCF for all LOO iterations: LOO_impute_ref.sh.
-   * Impute data for the left-out individual, using the reference file where they are removed: impute_single_chrom_LOO.sh
+   * Make reference phased VCF for all LOO iterations: LOO_impute_ref.sh
+   * Impute data for the left-out individual, using the reference file where they are removed
 
-3. Remove singletons: 
+3. Merge imputed VCFs, perform QC steps as described above
 
-4. Concatenate and merge VCFs: concat_vcfs.sh
-
-5. Test concordance. Compare imputed to 'truth' VCF, the high-coverage VCF of that animal
-
-8. Analyze concordance per coverage level 
+4. Test concordance. Compare imputed data to 'truth' VCF, the high-coverage VCF of that animal. Note: the 'truth' VCF should only include sites in the reference dataset, i.e., sites that were imputed, otherwise estimates of imputation concordance will be biased
+   * concord_indiv.sh
+   * split_concord_indiv.sh
