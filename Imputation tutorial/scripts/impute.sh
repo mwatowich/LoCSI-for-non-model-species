@@ -13,6 +13,6 @@ cat chroms | parallel --verbose -j 20 "singularity exec -B /path loimpute_latest
     -id ${sample} \
     -i pileups/${sample}.{1}.gz \
     -h reference/chr{1}.phased.filt.vcf.gz \
-    -o imputed/${sample}.{1}"
+    -o imputed/${sample}_{1}"
 
-cat chroms | parallel --verbose -j 20 "tabix -p vcf imputed/${sample}.{1}.vcf.gz"
+cat chroms | parallel --verbose -j 20 "tabix -p vcf imputed/${sample}_{1}.vcf.gz"
