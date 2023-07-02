@@ -17,7 +17,7 @@
    * We use 10%, but set the threshold accordingly to your reference panel
    * We phase with Beagle (Browning & Browning 2007), but any phasing program of similar performance can be used
 
-3. Optional: Perform standard quality control steps for genetic analyses. For example, removing invariant and multiallelic sites, sites out of HWE, etc. (filter_AF_multiallelic.sh)
+3. Optional: Perform standard quality control steps for genetic analyses. For example, removing invariant and multiallelic sites, sites out of HWE, etc. (filter_AF.sh)
 </br>
 
 ### Impute low-coverage data
