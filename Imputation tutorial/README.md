@@ -23,16 +23,17 @@
 ### Impute low-coverage data
 1. Create a file of sample names to be used for calling individual file names (example: data/samples)
 
-2. Impute (impute_single_chrom.sh). We use loimpue (Wasik 2021) but use any imputation program of your choice
+2. Impute: impute.sh
+   * We use loimpue (Wasik 2021; Copyright © 2019-2020, Gencove, Inc.) but use any imputation program of your choice
 
-3. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their population and dataset.
+4. Optional: annotate with MAF from the reference panel. We perform this step in our analyses for Watowich et al 2023 (in prep), as our reference panels were larger than the test imputation datasets. We suggest researchers use BCFtools fill-tags to calculate MAF of imputed data or annotate with reference panel MAF, depending on their population and dataset.
    * get_maf.sh #Note that if multiallelic sites are in the reference panel, this only keeps the first of multi-allelic alleles
    * Make header file (example: AFs.hdr)
    * maf_annotate.sh to annotate imputed files with reference panel MAF
 
-4. Merge imputed VCFs across chromosomes and individuals: merge_imputed.sh
+5. Merge imputed VCFs across chromosomes and individuals: merge_imputed.sh
 
-5. Optional: perform any QC (e.g., removing singletons, HWE or LD-filtering)
+6. Optional: perform any QC (e.g., removing singletons, HWE or LD-filtering)
 </br>
 
 ### Imputed data are generated. Perform downstream genetic analyses
