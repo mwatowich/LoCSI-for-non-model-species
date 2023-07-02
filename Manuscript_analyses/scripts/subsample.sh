@@ -3,12 +3,12 @@
 
 module load samtools/1.9
 
-sample=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $1}'`
-multiple10x=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $3}'`
-multiple3x=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $4}'`
-multiple1x=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $5}'`
-multiple0_5x=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $6}'`
-multiple0_1x=`sed -n ${SLURM_ARRAY_TASK_ID}p cov_x | awk '{print $7}'`
+sample=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $1}'`
+multiple10x=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $3}'`
+multiple3x=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $4}'`
+multiple1x=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $5}'`
+multiple0_5x=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $6}'`
+multiple0_1x=`sed -n ${SLURM_ARRAY_TASK_ID}p metadata/cov_x | awk '{print $7}'`
 
 ## Subsample to 10x 
 samtools view -@ 20 -bh -s ${multiple10x} ${sample}.bam > subsamp/${sample}.10x.bam
