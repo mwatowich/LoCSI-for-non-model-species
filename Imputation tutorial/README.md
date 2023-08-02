@@ -1,8 +1,8 @@
-## Pipeline for implementing low-coverage sequencing and imputation in natural populations (Watowich 2023, under review). 
+## Pipeline for implementing low-coverage sequencing and imputation in natural populations (Watowich 2023, in press). 
 
 
 ### Identify a reference panel for the species of interest
-* Based on our analyses in Watowich 2023 (in prep), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture should be accounted for when developing the reference panel.
+* Based on our analyses in Watowich 2023 (in press), we suggest a reference panel of at least 50 unrelated individuals, sequenced to at least 10x coverage. However, special considerations of your species' genetic architecture should be accounted for when developing the reference panel.
 * If the quality of genotype imputation from the reference panel is unknown, we suggest testing imputation quality using a leave-one-out approach. Please see the section "Validating reference panel using down-sampling and leave-one-out" below for more information. 
 </br>
 
