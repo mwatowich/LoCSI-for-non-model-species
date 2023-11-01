@@ -4,4 +4,4 @@
 
 ### Please see Tutorial/ for the guide to implementing imputation analyses in natural populations 
 
-### Please see Manuscript_analyses/ for analyses for Watowich et al. 2023 (in press)
+### Please see Manuscript_analyses/ for analyses for [Watowich et al. 2023 _Molecular Ecology Resources_](https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13854?af=R)
