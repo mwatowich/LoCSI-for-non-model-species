@@ -1,4 +1,4 @@
-## Imputation and analysis pipeline in Watowich et al. 2023 (under review)
+## Imputation and analysis pipeline in Watowich et al. 2023
 
 ### Filter reference panel
 1. Remove samples with high missingness, remove sites missing data in >10% of samples, phase (subset_filter_phase.sh)
